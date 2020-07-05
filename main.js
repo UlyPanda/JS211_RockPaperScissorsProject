@@ -16,7 +16,23 @@ const rockPaperScissors = (hand1, hand2) => {
 
   // Write code here
   // Use the unit test to see what is expected
+  hand1 = hand1.trim().toLowerCase();
+  hand2 = hand2.trim().toLowerCase();
 
+  if (hand1 === hand2){
+      return "It's a tie!";}
+    else if (hand1 === 'rock' && hand2 === 'paper'){
+      return "Hand two wins!";}
+    if (hand1 === 'paper' && hand2 === 'scissors'){
+      return "Hand two wins!";}
+    else if (hand1 === 'scissors' && hand2 === 'rock'){
+      return "Hand two wins!";}
+    if (hand1 === 'paper' && hand2 === 'rock'){
+      return "Hand one wins!";}
+    else if (hand1 === 'scissors' && hand2 === 'paper'){
+      return "Hand one wins!";}
+    if (hand1 === 'rock' && hand2 === 'scissors'){
+      return "Hand one wins!";}
 }
 
 // the first function called in the program to get an input from the user
@@ -52,6 +68,11 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
+    });
+    it('should check for valid inputs', () => {
+      assert.notEqual(rockPaperScissors('rock', 'rock'), "Invalid input!");
+      assert.notEqual(rockPaperScissors('paper', 'paper'), "Invalid input!");
+      assert.notEqual(rockPaperScissors('scissors', 'scissors'), "Invalid input!");
     });
   });
 } else {
